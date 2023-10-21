@@ -1,0 +1,36 @@
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar handle */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
+}
+
+/* For Firefox */
+/* Note: Firefox uses different pseudo-classes */
+
+/* Track */
+scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
