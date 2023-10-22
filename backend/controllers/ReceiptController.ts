@@ -48,6 +48,11 @@ class ReceiptController {
       });
       if (receiptToDelete) {
         await receiptToDelete.destroy();
+        await Product.destroy({
+          where: {
+            receipt_id: id
+          }
+        });
       }
       const allReceipts = await Receipt.findAll();
       res.status(200).json(allReceipts);
