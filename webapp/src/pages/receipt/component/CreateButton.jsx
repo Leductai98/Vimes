@@ -334,7 +334,7 @@ export default function CreateButton(props) {
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={isOpenSnackBar}
-        autoHideDuration={3000}
+        autoHideDuration={2000}
         onClose={handleOpenSnackBar}
       >
         <Alert

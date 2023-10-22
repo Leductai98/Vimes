@@ -18,12 +18,11 @@ import {
   Alert,
 } from "@mui/material";
 import { Icon } from "@mui/material";
-
+import { saveDetail } from "../../../services/APIServices";
 import { useState, useEffect } from "react";
 
 export default function CreateDeTail(props) {
-  const {data,onSetData}=props
-  console.log(data)
+  const {id,data,onSetProductData}=props
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSnackBar, setIsOpenSnackBar] = useState(false);
 
@@ -85,8 +84,9 @@ export default function CreateDeTail(props) {
     setIsOpenSnackBar(!isOpenSnackBar);
   };
 
-  const handleCreate = () => {
+  const handleCreate = async() => {
     const value ={
+      receiptId:id,
       name,
       codeNumber,
       unit,
@@ -94,7 +94,8 @@ export default function CreateDeTail(props) {
       realCount,
       price
     }
-    onSetData([...data,value])
+    const data=await saveDetail(id,value)
+    onSetProductData(data)
 
     setIsOpenSnackBar(!isOpenSnackBar);
     setIsOpen(!isOpen);
@@ -263,7 +264,7 @@ export default function CreateDeTail(props) {
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={isOpenSnackBar}
-        autoHideDuration={3000}
+        autoHideDuration={2000}
         onClose={handleOpenSnackBar}
       >
         <Alert
@@ -271,7 +272,7 @@ export default function CreateDeTail(props) {
           severity="success"
           sx={{ width: "100%", color: "white", backgroundColor: "green" }}
         >
-          This is a success message!
+          Thêm sản phẩm thành công
         </Alert>
       </Snackbar>
     </Grid>

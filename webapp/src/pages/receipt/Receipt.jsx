@@ -31,7 +31,7 @@ export default function Receipt() {
   <Typography variant='h6' sx={{
     textAlign:'center'
   }}>Danh sách phiếu nhập kho</Typography>
- <ReceiptList data={data}/>
+ <ReceiptList data={data} onSetData={handleSetData}/>
  </Grid>
 
  </Container>
