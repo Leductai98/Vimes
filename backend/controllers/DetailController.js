@@ -12,7 +12,7 @@ class DetailController {
       );
       const data = {
         receipt: receipt.rows[0],
-        product: product.rows,
+        products: product.rows,
       };
       res.status(200).json(data);
     } catch (err) {
@@ -52,7 +52,7 @@ class DetailController {
       const newData = req.body;
       await pool.query(`DELETE FROM public.product WHERE id=${id}`);
       //   res.status(200).json(newList.rows);
-      res.send('success');
+      res.send({message:'success'});
     } catch (err) {
       console.log(err.message);
       res.status(500).json({ message: err.message });

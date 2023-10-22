@@ -26,7 +26,7 @@ import { getDetail,deleteProduct } from "../../../services/APIServices";
 export default function DetailContent() {
   const { id } = useParams();
   const [receiptData, setReceiptData] = useState({});
-  const [productData, setProductData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
   const [total, setTotal] = useState(0);
   useEffect(() => {
     getReceiptData(id);
@@ -34,7 +34,7 @@ export default function DetailContent() {
 
   useEffect(() => {
     let total = 0;
-    productData.forEach((product) => {
+    productsData.forEach((product) => {
       const value = product.price * product.real_count;
       total += value;
     });
@@ -44,11 +44,11 @@ export default function DetailContent() {
   const getReceiptData = async (id) => {
     const data = await getDetail(id);
     setReceiptData(data.receipt);
-    setProductData(data.product);
+    setProductsData(data.products);
   };
 
-  const handleSetProductData = (data) => {
-    setProductData(data);
+  const handleSetProductsData = (data) => {
+    setProductsData(data);
   };
 
   const handleDelete = async(id,receiptId)=>{
@@ -199,10 +199,10 @@ export default function DetailContent() {
             </Typography>
             <CreateDeTail
               id={id}
-              data={productData}
-              onSetProductData={handleSetProductData}
+              data={productsData}
+              onSetProductData={handleSetProductsData}
             />
-            {productData.length === 0 ? (
+            {productsData.length === 0 ? (
               <div>Không có sản phẩm nào</div>
             ) : (
               <>
@@ -224,7 +224,7 @@ export default function DetailContent() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {productData.map((row, index) => (
+                      {productsData.map((row, index) => (
                         <TableRow
                           key={index}
                           sx={{
