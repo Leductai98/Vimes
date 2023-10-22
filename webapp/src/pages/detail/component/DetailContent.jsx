@@ -39,7 +39,7 @@ export default function DetailContent() {
       total += value;
     });
     setTotal(total);
-  }, [productData]);
+  }, [productsData]);
 
   const getReceiptData = async (id) => {
     const data = await getDetail(id);

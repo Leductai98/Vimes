@@ -2,15 +2,16 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "test": "mocha",
-    "dev": "nodemon server.js"
+    "test": "mocha --require ts-node/register test/**/*.ts",
+    "dev": "ts-node server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/pg": "^8.10.7",
     "axios": "^1.5.0",
     "chai": "^4.3.10",
     "chai-http": "^4.4.0",
@@ -19,9 +20,18 @@
     "express": "^4.18.2",
     "mongoose": "^7.4.2",
     "nodemon": "^3.0.1",
-    "pg": "^8.11.2"
+    "pg": "^8.11.2",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.33.0",
+    "sequelize-typescript": "^2.1.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.9",
+    "@types/cors": "^2.8.15",
+    "@types/express": "^4.17.20",
+    "@types/mocha": "^10.0.3",
     "mocha": "^10.2.0"
   }
 }

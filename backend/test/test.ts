@@ -1,9 +1,9 @@
-let chai = require("chai");
-let chaiHttp = require("chai-http");
-let server = require("../server");
-
+import { expect } from 'chai';
+import chaiHttp from 'chai-http';
+import server from '../server';
+import chai from 'chai';
+import "mocha";
 chai.should();
-
 chai.use(chaiHttp);
 
 describe("Receipt list API", () => {
@@ -14,8 +14,8 @@ describe("Receipt list API", () => {
         .request(server)
         .get("/receipt")
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("array");
+          expect(response).to.have.status(200);
+          expect(response.body).to.be.an('array');
           done();
         });
     });
@@ -42,8 +42,8 @@ describe("Receipt list API", () => {
         .post("/receipt")
         .send(value)
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("array");
+          expect(response).to.have.status(200);
+          expect(response.body).to.be.an('array');
           done();
         });
     });
@@ -57,8 +57,8 @@ describe("Receipt list API", () => {
         .request(server)
         .delete(`/receipt/${id}`)
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("array");
+          expect(response).to.have.status(200);
+          expect(response.body).to.be.an('array');
           done();
         });
     });
@@ -75,10 +75,10 @@ describe("Receipt detail API", () => {
         .request(server)
         .get(`/detail/${id}`)
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("object");
-          response.body.should.have.property("receipt");
-          response.body.should.have.property("products");
+          expect(response).to.have.status(200);
+          expect(response.body).to.be.an('object');
+          expect(response.body).to.have.property("receipt");
+          expect(response.body).to.have.property("products");
           done();
         });
     });
@@ -102,8 +102,8 @@ describe("Receipt detail API", () => {
         .post(`/detail/${id}`)
         .send(value)
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("array");
+          expect(response).to.have.status(200);
+          expect(response.body).to.be.an('array');
           done();
         });
     });
@@ -117,9 +117,9 @@ describe("Receipt detail API", () => {
         .request(server)
         .delete(`/detail/product/${id}`)
         .end((err, response) => {
-          response.should.have.status(200);
-          response.body.should.be.a("object");
-          response.body.should.have.property("message").eq("success");
+          expect(response).to.have.status(200);
+          expect(response.body).to.be.an('object');
+          expect(response.body).to.have.property("message").eq("success");
           done();
         });
     });
