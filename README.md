@@ -1,9 +1,12 @@
 
-# run backend
-cd backend && npm run dev
+# backend
+cd backend
+npm run dev
 
-# run webapp
-cd webapp && npm run dev
+# webapp
+cd webapp
+npm run dev
 
-# run unit test in backend
-cd backend && npm run test
+#  test 
+cd backend
+npm run test
